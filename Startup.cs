@@ -9,7 +9,7 @@ using Supermarket.API.Domain.Persistence.Contexts;
 using Supermarket.API.Domain.Repositories;
 using Supermarket.API.Domain.Services;
 using Supermarket.API.Persistence.Repositories;
-using Supermarket.API.Service;
+using Supermarket.API.Services;
 using System;
 
 namespace Supermarket.API
@@ -34,7 +34,11 @@ namespace Supermarket.API
             });
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
